@@ -1,0 +1,104 @@
+<!--
+TemplateName:Admin Student Page
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Student Profile</title>
+    <!-- required scripts -->
+    ~[wc:commonscripts]
+    <!-- Required style sheets: screen.css, and print.css -->
+    <link href="/images/css/screen.css" rel="stylesheet" media="screen" />
+    <link href="/images/css/print.css" rel="stylesheet" media="print" />
+  </head>
+  <body>
+    ~[wc:admin_header_frame_css]
+    <!-- breadcrumb start -->
+    <a href="/admin/home.html" target="_top">Start Page</a> &gt;
+    <a href="/admin/students/home.html?selectstudent=nosearch" target="_top"
+      >Student Selection</a
+    >
+    &gt; Student Profile
+    <!-- breadcrumb end -->
+    ~[wc:admin_navigation_frame_css]
+    <!-- start of main menu and content -->
+    ~[wc:title_student_begin_css]Student Profile~[wc:title_student_end_css]
+
+    <!-- start of content area -->
+
+    <table class="linkDescList">
+      <tr>
+        <th>Attribute</th>
+        <th>Value</th>
+      </tr>
+      <tr>
+        <td class="bold">Name (Last, First Middle)</td>
+        <td>
+          <input
+            type="text"
+            name="[01]lastfirst"
+            value=""
+            size="50"
+            maxlength="50"
+            id="lastName"
+            readonly
+          />
+        </td>
+      </tr>
+      <tr>
+        <td class="bold">Mother</td>
+        <td>
+          <input
+            type="text"
+            name="[01]mother"
+            value=""
+            size="50"
+            maxlength="50"
+            readonly
+          />
+        </td>
+      </tr>
+      <tr>
+        <td class="bold">Father</td>
+        <td>
+          <input
+            type="text"
+            name="[01]father"
+            value=""
+            size="50"
+            maxlength="50"
+            readonly
+          />
+        </td>
+      </tr>
+      <tr>
+        <td class="bold">Address</td>
+        <td>
+          <input
+            type="text"
+            id="address"
+            value=""
+            size="50"
+            maxlength="50"
+            readonly
+          />
+        </td>
+      </tr>
+    </table>
+    <script>
+      $j(document).ready(function () {
+        var street = "~([01]street)";
+        var city = "~([01]city)";
+        var state = "~([01]state)";
+        var zip = "~([01]zip)";
+        var address = street + " " + city + " " + state + " " + zip;
+        address = address.replace("#", "");
+        document.getElementById("address").value = address;
+      });
+    </script>
+
+    <!-- end of content area -->
+
+    ~[wc:admin_footer_frame_css]
+  </body>
+</html>

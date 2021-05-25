@@ -1,0 +1,15 @@
+<script type="text/template" id="health-care-plan-template">
+    <li>
+        <a href="studentprofile.html?frn=~(studentfrn)">
+            Health Care Plans
+        </a>
+    </li>
+</script>
+
+<script>
+    require(['jquery'], function($) {
+        $('#std_information a').last().parent().after(
+            $('#health-care-plan-template').html()
+        );
+    });
+</script>
