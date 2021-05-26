@@ -38,7 +38,15 @@ TemplateName:Admin Student Page
         </td>
       </tr>
       <tr>
-        <td class="bold">Schedule</td>
+        <td class="bold">Term Grades</td>
+        <td>
+          <a href="/admin/students/termgrades.html?frn=~(studentfrn)"
+            >Term Grades</a
+          >
+        </td>
+      </tr>
+      <tr>
+        <td class="bold">Test Scores</td>
         <td>
           <a
             href="/admin/students/student_tests_scores_summary.html?frn=~(studentfrn)"
@@ -178,6 +186,32 @@ TemplateName:Admin Student Page
         </td>
       </tr>
       <tr>
+        <td class="bold">Home Room</td>
+        <td>
+          <input
+            type="text"
+            name="[01]home_room"
+            value=""
+            size="50"
+            maxlength="50"
+            readonly
+          />
+        </td>
+      </tr>
+      <tr>
+        <td class="bold">Enroll Status</td>
+        <td>
+          <input
+            type="text"
+            id="enroll"
+            value=""
+            size="50"
+            maxlength="50"
+            readonly
+          />
+        </td>
+      </tr>
+      <tr>
         <td class="bold">Grade Level</td>
         <td>
           <input
@@ -218,6 +252,24 @@ TemplateName:Admin Student Page
       </tr>
     </table>
     <script>
+      $j(document).ready(function () {
+        var enrollment = "~([01]enroll_status)";
+        if (enrollment == 0) {
+          document.getElementById("enroll").value = "Active";
+        } else if (enrollment == -2) {
+          document.getElementById("enroll").value = "Inactive";
+        } else if (enrollment == -1) {
+          document.getElementById("enroll").value = "Pre-registered";
+        } else if (enrollment == 2) {
+          document.getElementById("enroll").value = "Transferred out";
+        } else if (enrollment == 3) {
+          document.getElementById("enroll").value = "Graduated";
+        } else if (enrollment == 4) {
+          document.getElementById("enroll").value = "Imported as Historial";
+        } else {
+          document.getElementById("enroll").value = "Inactive";
+        }
+      });
       $j(document).ready(function () {
         var schoolid = "~([01]schoolid)";
         if (schoolid == 712) {
