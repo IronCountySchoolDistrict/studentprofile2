@@ -32,6 +32,21 @@ TemplateName:Admin Student Page
         <th>Value</th>
       </tr>
       <tr>
+        <td class="bold">Schedule</td>
+        <td>
+          <a href="/admin/students/schedule.html?frn=~(studentfrn)">Schedule</a>
+        </td>
+      </tr>
+      <tr>
+        <td class="bold">Schedule</td>
+        <td>
+          <a
+            href="/admin/students/student_tests_scores_summary.html?frn=~(studentfrn)"
+            >Test Scores Summary</a
+          >
+        </td>
+      </tr>
+      <tr>
         <td class="bold">Name (Last, First Middle)</td>
         <td>
           <input
@@ -40,7 +55,33 @@ TemplateName:Admin Student Page
             value=""
             size="50"
             maxlength="50"
-            id="lastName"
+            readonly
+          />
+        </td>
+      </tr>
+      <tr>
+        <td class="bold">Birthday</td>
+        <td>
+          <input
+            type="text"
+            id="dob"
+            name="[01]DOB"
+            value=""
+            size="50"
+            maxlength="50"
+            readonly
+          />
+        </td>
+      </tr>
+      <tr>
+        <td class="bold">Age</td>
+        <td>
+          <input
+            type="text"
+            id="age"
+            value=""
+            size="50"
+            maxlength="50"
             readonly
           />
         </td>
@@ -72,7 +113,20 @@ TemplateName:Admin Student Page
         </td>
       </tr>
       <tr>
-        <td class="bold">Address</td>
+        <td class="bold">Mailing Address</td>
+        <td>
+          <input
+            type="text"
+            id="maddress"
+            value=""
+            size="50"
+            maxlength="50"
+            readonly
+          />
+        </td>
+      </tr>
+      <tr>
+        <td class="bold">Residence Address</td>
         <td>
           <input
             type="text"
@@ -84,8 +138,146 @@ TemplateName:Admin Student Page
           />
         </td>
       </tr>
+      <tr>
+        <td class="bold">Doctor</td>
+        <td>
+          <input
+            type="text"
+            name="[01]doctor_name"
+            value=""
+            size="50"
+            maxlength="50"
+            readonly
+          />
+        </td>
+      </tr>
+      <tr>
+        <td class="bold">Doctor Phone</td>
+        <td>
+          <input
+            type="text"
+            name="[01]doctor_phone"
+            value=""
+            size="50"
+            maxlength="50"
+            readonly
+          />
+        </td>
+      </tr>
+      <tr>
+        <td class="bold">School</td>
+        <td>
+          <input
+            type="text"
+            id="schoolname"
+            value=""
+            size="50"
+            maxlength="50"
+            readonly
+          />
+        </td>
+      </tr>
+      <tr>
+        <td class="bold">Grade Level</td>
+        <td>
+          <input
+            type="text"
+            name="[01]grade_level"
+            value=""
+            size="50"
+            maxlength="50"
+            readonly
+          />
+        </td>
+      </tr>
+      <tr>
+        <td class="bold">Entry Date</td>
+        <td>
+          <input
+            type="text"
+            name="[01]entrydate"
+            value=""
+            size="50"
+            maxlength="50"
+            readonly
+          />
+        </td>
+      </tr>
+      <tr>
+        <td class="bold">Exit Date</td>
+        <td>
+          <input
+            type="text"
+            name="[01]exitdate"
+            value=""
+            size="50"
+            maxlength="50"
+            readonly
+          />
+        </td>
+      </tr>
     </table>
     <script>
+      $j(document).ready(function () {
+        var schoolid = "~([01]schoolid)";
+        if (schoolid == 712) {
+          document.getElementById("schoolname").value =
+            "Canyon View High School";
+        } else if (schoolid == 704) {
+          document.getElementById("schoolname").value =
+            "Cedar City High School";
+        } else if (schoolid == 708) {
+          document.getElementById("schoolname").value = "Parowan High School";
+        } else if (schoolid == 750) {
+          document.getElementById("schoolname").value =
+            "Southwest Education Academy";
+        } else if (schoolid == 700) {
+          document.getElementById("schoolname").value = "Success Academy";
+        } else if (schoolid == 716) {
+          document.getElementById("schoolname").value = "Launch High School";
+        } else if (schoolid == 308) {
+          document.getElementById("schoolname").value =
+            "Canyon View Middle School";
+        } else if (schoolid == 304) {
+          document.getElementById("schoolname").value =
+            "Cedar City Middle School";
+        } else if (schoolid == 104) {
+          document.getElementById("schoolname").value =
+            "East Elementary School";
+        } else if (schoolid == 120) {
+          document.getElementById("schoolname").value =
+            "Enoch Elementary School";
+        } else if (schoolid == 116) {
+          document.getElementById("schoolname").value =
+            "Escalante Valley Elementary School";
+        } else if (schoolid == 124) {
+          document.getElementById("schoolname").value =
+            "Fiddlers Canyon Elementary School";
+        } else if (schoolid == 132) {
+          document.getElementById("schoolname").value =
+            "Iron Springs Elementary School";
+        } else if (schoolid == 108) {
+          document.getElementById("schoolname").value =
+            "North Elementary School";
+        } else if (schoolid == 128) {
+          document.getElementById("schoolname").value =
+            "Parowan Elementary School";
+        } else if (schoolid == 112) {
+          document.getElementById("schoolname").value =
+            "South Elementary School";
+        } else if (schoolid == 136) {
+          document.getElementById("schoolname").value =
+            "Three Peaks Elementary School";
+        } else if (schoolid == 150) {
+          document.getElementById("schoolname").value = "Iron County Preschool";
+        } else if (schoolid == 160) {
+          document.getElementById("schoolname").value = "Three Peaks Preschool";
+        } else if (schoolid == 710) {
+          document.getElementById("schoolname").value = "Success Academy-Dixie";
+        } else {
+          document.getElementById("schoolname").value = "District Office";
+        }
+      });
       $j(document).ready(function () {
         var street = "~([01]street)";
         var city = "~([01]city)";
@@ -94,6 +286,34 @@ TemplateName:Admin Student Page
         var address = street + " " + city + " " + state + " " + zip;
         address = address.replace("#", "");
         document.getElementById("address").value = address;
+      });
+      $j(document).ready(function () {
+        var mstreet = "~([01]mailing_street)";
+        var mcity = "~([01]mailing_city)";
+        var mstate = "~([01]mailing_state)";
+        var mzip = "~([01]mailing_zip)";
+        var maddress = mstreet + " " + mcity + " " + mstate + " " + mzip;
+        maddress = maddress.replace("#", "");
+        document.getElementById("maddress").value = maddress;
+      });
+      $j(document).ready(function () {
+        var mstreet = "~([01]mailing_street)";
+        var mcity = "~([01]mailing_city)";
+        var mstate = "~([01]mailing_state)";
+        var mzip = "~([01]mailing_zip)";
+        var maddress = mstreet + " " + mcity + " " + mstate + " " + mzip;
+        maddress = maddress.replace("#", "");
+        document.getElementById("maddress").value = maddress;
+      });
+      $j(document).ready(function () {
+        var today = new Date();
+        var birthDay = new Date(document.getElementById("dob").value);
+        let age = today.getFullYear() - birthDay.getFullYear();
+        var m = today.getMonth() - birthDay.getMonth();
+        if (m < 0 || (m === 0 && today.getDate() < birthDay.getDate())) {
+          age--;
+        }
+        document.getElementById("age").value = age;
       });
     </script>
 
