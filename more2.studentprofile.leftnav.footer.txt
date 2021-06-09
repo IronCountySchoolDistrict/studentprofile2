@@ -1,8 +1,15 @@
+<script type="text/template" id="studentprofile">
+    <li>
+        <a href="studentprofile2.html?frn=~(studentfrn)">
+            Student Profile
+        </a>
+    </li>
+</script>
 
-<script> 
-    $j(document).ready(function(){
-        
-            $j("ul#std_information").append("<li><a href='/admin/students/studentprofile2.html?frn=~(studentfrn)'>Student Profile 2</a></li>"); 
-
-    }); 
-</script> 
+<script>
+    require(['jquery'], function($) {
+        $('#std_information a').first().parent().before(
+            $('#studentprofile').html()
+        );
+    });
+</script>

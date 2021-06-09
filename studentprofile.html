@@ -25,7 +25,7 @@ TemplateName:Admin Student Page
     ~[wc:title_student_begin_css]Student Profile~[wc:title_student_end_css]
 
     <!-- start of content area -->
-
+    <center><img src="/admin/stp/~(curstudid)ph.jpeg" height="200" /></center>
     <table class="linkDescList">
       <tr>
         <th>Attribute</th>
@@ -54,6 +54,7 @@ TemplateName:Admin Student Page
           >
         </td>
       </tr>
+
       <tr>
         <td class="bold">Name (Last, First Middle)</td>
         <td>
@@ -250,7 +251,24 @@ TemplateName:Admin Student Page
           />
         </td>
       </tr>
+      <tr>
+        <td class="bold" style="background-color: red; color: white">
+          Medical Alert
+        </td>
+        <td style="background-color: red; color: white">
+          <input
+            style="color: white"
+            type="text"
+            name="[01]Alert_Medical"
+            value=""
+            size="150"
+            maxlength="150"
+            readonly
+          />
+        </td>
+      </tr>
     </table>
+
     <script>
       $j(document).ready(function () {
         var enrollment = "~([01]enroll_status)";
